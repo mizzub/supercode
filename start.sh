@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Чтение ключа для clang
-echo -e "Этот файл должен находится в /src"
+echo -e "Файл .clang-format sдолжен находится в /src"
 echo -e "Введите ключ для clang (-i/-n/-in):"
 read VAR1
 case $VAR1 in
@@ -39,14 +39,14 @@ case $VAR2 in
 esac
 
 # Определение типа компиляции
-echo -e "Компиляция GCC, простая или сложная (easy/hard)? "
+echo -e "Компиляция GCC, с флагами или без...(flags/noflags)? "
 read VAR3
 
 case $VAR3 in
-    hard)
-        gcc -std=c11 -Wall -Werror -Wextra -fsanitize=address "$1"
+    flags)
+        gcc -std=c11 -Wall -Werror -Wextra "$1"
         ;;
-    easy)
+    noflags)
         gcc "$1"
         ;;
     *)
@@ -54,19 +54,29 @@ case $VAR3 in
         exit 1
         ;;
 esac
-./a.out
+#Если не работает. Сделать по инструкции
+#cd /usr/local/lib
+#sudo ln -s /Applications/Xcode.app/Contents/Developer/usr/lib/libLeaksAtExit.dylib
+#
+#
+# Проверка LEAKS и запуск програмы
+echo -e "Будем делать проверку LEAKS (1/2/no)?"
+echo -e "(1) - добавляем 'grep LEAK'\n(2) - не добавляем grep LEAK"
+read VAR4
+case $VAR4 in
+    1)
+        leaks -atExit -- ./a.out | grep LEAK:
+        ;;
+    2)
+        leaks -atExit -- ./a.out
+        ;;
+    no)
+        echo
+        ;;
+    *)
+        echo "нет такого варианта для LEAKS"
+        exit 1
+        ;;
+esac
+echo -e "Проверки пройдены. Результат выше ..."
 
-
-
-# Через if fi else if
-# Проверка CPPCHECK
-# echo -e "Будем делать проверку CPPCHECK (yes/no)?"
-# read VAR2
-
-# if [[ $VAR2 == "yes" ]]; then
-    #cppcheck --enable=all --suppress=missingIncludeSystem "$1"
-# fi
-# if [[ $VAR2 != "no" ]]; then
-    #echo "Неверный ввод для CPPCHECK."
-    #exit 1
-#fi
