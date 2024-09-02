@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Чтение ключа для clang
+echo -e "Этот файл должен находится в /src"
 echo -e "Введите ключ для clang (-i/-n/-in):"
 read VAR1
 case $VAR1 in
@@ -23,14 +24,19 @@ esac
 # Проверка CPPCHECK
 echo -e "Будем делать проверку CPPCHECK (yes/no)?"
 read VAR2
-
-if [[ $VAR2 == "yes" ]]; then
-    cppcheck --enable=all --suppress=missingIncludeSystem "$1"
-fi
-if [[ $VAR2 != "no" ]]; then
-    echo "Неверный ввод для CPPCHECK."
-    exit 1
-fi
+case $VAR2 in
+    yes)
+        cppcheck --enable=all --suppress=missingIncludeSystem "$1"
+        ;;
+    no)
+        echo
+        ;;
+    *)
+        echo "нет такого варианта в CPPCHECK"
+        exit 1
+        ;;
+    
+esac
 
 # Определение типа компиляции
 echo -e "Компиляция GCC, простая или сложная (easy/hard)? "
@@ -48,5 +54,19 @@ case $VAR3 in
         exit 1
         ;;
 esac
+./a.out
 
 
+
+# Через if fi else if
+# Проверка CPPCHECK
+# echo -e "Будем делать проверку CPPCHECK (yes/no)?"
+# read VAR2
+
+# if [[ $VAR2 == "yes" ]]; then
+    #cppcheck --enable=all --suppress=missingIncludeSystem "$1"
+# fi
+# if [[ $VAR2 != "no" ]]; then
+    #echo "Неверный ввод для CPPCHECK."
+    #exit 1
+#fi
