@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Чтение ключа для clang
-echo -e "Файл .clang-format sдолжен находится в /src"
+echo -e "\nФайл .clang-format sдолжен находится в /src"
 echo -e "Введите ключ для clang (-i/-n/-in):"
 read VAR1
 case $VAR1 in
