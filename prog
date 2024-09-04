@@ -1,0 +1,54 @@
+#include <stdio.h>
+#define NMAX 10
+int sort(int* arr, int n);
+int output(int* arr, int n);
+int input(int* arr, int n);
+
+int main() {
+    
+int arr[NMAX];
+int n;// Количество элементов
+scanf("%d", &n);
+
+if (input(arr, n)) {
+sort(arr, n);
+output(arr, n);   
+} else { 
+    printf("n/a");
+}  
+return 0;
+}
+int input(int* arr, int n) {
+char c; int result=1;
+for (int i=0; i<n; i++) {
+    if ((scanf("%d%c", &arr[i], &c) !=2) || (c !='\n')) { 
+     if (c != ' ') 
+        result=0;
+}
+}
+return result;
+}
+int sort(int* arr, int n) {
+int tmp;
+for (int i = 1; i < n; i++) {
+		for (int j = i; j > 0; j--) 
+		{
+			if (arr[j] < arr[j-1]) 
+			{
+				tmp = arr[j];
+				arr[j] = arr[j-1];
+				arr[j-1] = tmp;
+          }
+           
+        }
+    }
+}
+
+int output(int* arr, int n) {
+
+
+for (int i=0; i<n; i++) { 
+    printf("%d ", arr[i]);
+}
+
+}  
