@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define NMAX 10
+int sort(int* arr, int n);
+int output(int* arr, int n);
+int input(int* arr, int n);
+
+int main() {
+    int n;
+    int start = 1;  // Количество элементов
+    if (scanf("%d", &n) != 1 || n <= 0 || n > NMAX) {
+        { printf("n/a"); }
+        start = 1;
+    }
+    int* arr = (int*)malloc(n * sizeof(int));  //Добавлено динамическое выделение памяти с помощью malloc.
+    if (arr == NULL) {
+        printf("n/a");
+        start = 1;
+    }
+
+    if (input(arr, n)) {
+        sort(arr, n);
+        output(arr, n);
+    } else {
+        printf("n/a");
+    }
+    free(arr);  // Освобождаем память
+    return start;
+}
+int input(int* arr, int n) {
+    char c;
+    int result = 1;
+    for (int i = 0; i < n; i++) {
+        if ((scanf("%d%c", &arr[i], &c) != 2) || (c != '\n')) {
+            if (c != ' ') result = 0;
+        }
+    }
+    return result;
+}
+int sort(int* arr, int n) {
+    int tmp;
+    for (int i = 1; i < n; i++) {
+        for (int j = i; j > 0; j--) {
+            if (arr[j] < arr[j - 1]) {
+                tmp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = tmp;
+            }
+        }
+    }
+    return 0;
+}
+
+int output(int* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
