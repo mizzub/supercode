@@ -1,0 +1,10 @@
+Exam
+#include <stdio.h>
+int main() {
+    float radian = 57.29;
+    int input;
+    if (scanf("%d", &input) == 1 && getchar() == '\n') {
+        printf("%.0f", input * radian);
+    } else printf ("n/a\n");
+    return 0;
+}
