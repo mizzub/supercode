@@ -5,6 +5,6 @@ int main() {
     int input;
     if (scanf("%d", &input) == 1 && getchar() == '\n') {
         printf("%.0f", input * radian);
-    } else printf ("n/a\n");
+    } else printf ("n/a");
     return 0;
 }
