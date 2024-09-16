@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <string.h>
+
+int open_and_read_file(char *filepath) {
+
+char *buffer = NULL;
+size_t size = 0;
+ssize_t bytes_read;
+
+FILE *file = fopen(filepath, "r");
+if(file == NULL) {
+    perror("n/a\n");
+    return -1;
+}
+fclose(file);
+return 0;
+
+}
+
+int main() {
+    char filepath[256];
+
+    while (1) {
+    printf("Введите путь к текстовому файлу или -1 для выхода:\n");
+    if(fgets(filepath, sizeof(filepath), stdin) == NULL) {
+        printf("n/a\n");
+    }
+    
+    open_and_read_file(filepath);
+    printf("\n");
+    }
+    return 0;
+}
