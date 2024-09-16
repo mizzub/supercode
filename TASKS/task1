@@ -1,34 +1,54 @@
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <string.h>
-
-int open_and_read_file(char *filepath) {
-
-char *buffer = NULL;
-size_t size = 0;
-ssize_t bytes_read;
-
-FILE *file = fopen(filepath, "r");
-if(file == NULL) {
-    perror("n/a\n");
-    return -1;
-}
-fclose(file);
-return 0;
-
-}
+void fun(char* arr, char* filepath);
 
 int main() {
-    char filepath[256];
+    char filepath[255];
+    char arr[255];
+    char var = 1;
+    int exit_flag = 0;
 
-    while (1) {
-    printf("Введите путь к текстовому файлу или -1 для выхода:\n");
-    if(fgets(filepath, sizeof(filepath), stdin) == NULL) {
-        printf("n/a\n");
+    while (exit_flag != 1) {
+        printf("Введите 1 или -1:\n");
+        if (scanf("%d", &var) != 1) {
+            printf("n/a");
+            exit_flag = 1;
+        } else {
+            if (var == -1) {
+                exit_flag = 1;
+            }
+        }
+        switch (var) {
+            case (1):
+                fun(arr, filepath);
+                printf("\n");
+                break;
+            case (-1):
+                break;
+
+            default:
+                printf("n/a\n");
+                break;
+        }
     }
-    
-    open_and_read_file(filepath);
-    printf("\n");
+    return exit_flag;
+}
+
+void fun(char* arr, char* filepath) {
+    FILE* file;
+    scanf("%s", filepath);
+    file = fopen(filepath, "r");
+    if (file == NULL) {
+        printf("n/a");
+    } else {
+        if (fgets(arr, sizeof(arr), file) == NULL) {
+            printf("n/a");
+        } else {
+            do {
+                printf("%s", arr);
+            } while (fgets(arr, sizeof(arr), file) != NULL);
+        }
+        fclose(file);
     }
-    return 0;
 }
