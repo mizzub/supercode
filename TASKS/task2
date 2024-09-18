@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double r = 0.0;
+    char endline;
+    if (scanf("%lf", &r)) {
+        endline = getchar();
+        if (endline == ' ' || endline == '\n') {
+            double v = (4.0/3.0) * M_PI * pow(r, 3.0);
+            double p = 0.0215;
+            double m = p * v;
+            double rounded_mass = round(m);
+            printf("%lf\n", m);
+            printf("%0lf", rounded_mass);
+            } else {
+                printf("n/a");
+            }
+    } else {
+        printf("n/a");
+    }
+    return 0;
+}
