@@ -1,1 +1,33 @@
+#include <stdio.h>
 
+int main() {
+  float a,b,expression;
+  char sign;
+  scanf(" %c %f %f", &sign, &a, &b);
+  switch (sign) {
+      case '+':
+          expression = a+b;
+          printf("%.2f", expression);
+          break;
+      case '-':
+          expression = a-b;
+          printf("%.2f", expression);
+          break;
+      case '*':
+          expression = a*b;
+          printf("%.2f", expression);
+          break;
+      case '/':
+          if (b == 0) {
+          printf("ERROR!");
+          } else {
+          expression = a/b;
+          printf("%.2f", expression);
+          }
+          break;
+      default:
+          printf("ERROR");
+          break;
+  }
+  return 0;
+}
