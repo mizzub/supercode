@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+  int digit;
+  int exit_flag=0;
+  int num;
+  int A[512];
+  if (scanf("%d\n", &digit)!=1 || (digit<=0) || (digit>100) ) {
+  printf("n/a");
+  exit_flag=1;
+  } else {
+  for (int i=0;i<digit;i++) {
+      scanf("%d", &num);
+      A[i]=num;
+  }
+  for (int i=digit-1;i>=0;i--) {
+     printf("%d", A[i]);
+     if (i>0) {
+     printf(" ");}
+  }
+  }
+  return exit_flag;
+}
