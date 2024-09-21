@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+  int arraySize;
+  int num;
+  int A[512];
+  int isPalindrome = 1;
+  if (scanf("%d", &arraySize)!=1 || (arraySize<=0) || (arraySize>100) ) {
+  printf("n/a");
+  return 1;
+  } else {
+ for (int i=0;i<arraySize;i++) {
+      scanf("%d", &num);
+      A[i]=num;
+  }
+ for (int i=0;i<arraySize/2;i++) {
+     if (A[i] != A[arraySize-i-1]) {
+         isPalindrome = 0;
+         break;
+     }
+  }
+if (isPalindrome == 0) {
+    printf("NO");
+} else {
+    printf("YES");
+}
+  }
+  return 0;
+}
