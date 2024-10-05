@@ -1,0 +1,62 @@
+## Variances 2.
+
+#include <stdio.h>
+
+int main() {
+  int n;
+  scanf("%d", &n);
+  int matrix[n][n];
+  for (int i = 0; i < n; i++) {
+      int k = i + 1; // обновляется когда переходим к новой строчке
+      for (int j = 0; j < n; j++){
+      if (i == j) {
+          matrix[i][j] = 1;
+          k = 2;// фишка без который следующий после 1, будет 1 1 2 3 4 ...
+      } else if (i < j) {
+          matrix[i][j] = k;
+          k++;
+          
+      } else if (i > j) {    // По идее условие выполнится только со слелующей строки
+          matrix[i][j] = k;
+          k--; 
+      }
+    }      
+  }
+  for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+          printf("%d ", matrix[i][j]);
+      }
+      printf("\n");
+  }
+
+  ## Variances 3.
+#include <stdio.h>
+
+int main() {
+  int n,r;
+  scanf("%d", &n);
+  int matrix[n][n];
+  for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+      if (i == j) {
+         r = 0;                                            
+      } else if (i < j) {
+         r = j - i;
+      } else if (i > j) {
+         r = i - j; 
+      }
+        matrix[i][j]=r+1;
+      }
+  }
+  for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+          printf("%d ", matrix[i][j]);
+      }
+      printf("\n");
+  }
+  return 0;
+}
+  
+  return 0;
+}
+// Сделал не совсем сам
