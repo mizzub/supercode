@@ -1,0 +1,15 @@
+Hello World
+hello world
+
+ASD ASD
+This is a test file. asd
+Another line.
+Pattern matching is fun. AD
+Grep is a useful command.
+Testing grep functionality. AS
+This line does not contain the pattern.
+grep
+        -asd
+        asd
+        ASD
+        asd
