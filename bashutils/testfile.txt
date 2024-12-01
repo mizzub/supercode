@@ -1,0 +1,10 @@
+Hello World
+hello world
+HELLO WORLD
+This is a test file.
+Another line.
+Pattern matching is fun.
+Grep is a useful command.
+Testing grep functionality.
+This line does not contain the pattern.
+grep
